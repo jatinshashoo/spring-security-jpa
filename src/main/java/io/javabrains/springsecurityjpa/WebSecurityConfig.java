@@ -24,10 +24,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/").permitAll()
-                .and().formLogin();
+                .antMatchers("/admin")
+                .hasRole("ADMIN")
+                .antMatchers("/user")
+                .hasAnyRole("ADMIN", "USER")
+                .antMatchers("/")
+                .permitAll()
+                .and()
+                .formLogin();
     }
 
     @Bean
